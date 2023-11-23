@@ -1,7 +1,8 @@
 
 
 export const fileUpload = async( file ) => {
-    if ( !file ) throw new Error('No tenemos ningú archivo a subir');
+    // if ( !file ) throw new Error('No tenemos ningú archivo a subir');
+    if ( !file ) return null;
 
     const cloudUrl = 'https://api.cloudinary.com/v1_1/dskcf8wcl/upload';
 
@@ -18,12 +19,13 @@ export const fileUpload = async( file ) => {
 
         
         if ( !resp.ok ) throw new Error('No se puedo subir imagen')
-        const clouResp = await resp.json();
+        const cloudResp = await resp.json();
 
-        return clouResp;
+        return cloudResp.secure_url;
         
     } catch (error) {
-        console.log( error );
-        throw new Error( error.message );
+        // console.log( error );
+        // throw new Error( error.message );
+        return null;
     }
 }
