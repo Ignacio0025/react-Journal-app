@@ -1,9 +1,6 @@
-/** @type {import('jest').Config} */
-const config = {
-  verbose: true,
-  transform: {},
-  moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node'],
-  transformIgnorePatterns: ['/node_modules/'],
+/** @returns {Promise<import('jest').Config>} */
+module.exports = async () => {
+  return {
+    verbose: true,
+  };
 };
-
-module.exports = config;
